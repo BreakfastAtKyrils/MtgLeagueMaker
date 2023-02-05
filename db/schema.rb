@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define do
     t.integer "player_id", null: false
     t.integer "deck_id", null: false
     t.string "record_type", null: false
-    t.integer "game_i", null: false
+    t.integer "game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
