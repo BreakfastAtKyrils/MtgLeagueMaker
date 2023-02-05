@@ -1,4 +1,4 @@
-class GameRecord < ActiveRecord
+class GameRecord < ApplicationRecord
   validates :player_id, presence: true
   validates :deck_id, presence: true
   validates :record_type, presence: true
