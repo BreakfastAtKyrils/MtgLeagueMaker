@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    env:
+      RAILS_ENV: test
+
+    steps:
+      - name: Pull code
+        uses: actions/checkout@v2
+
+      - name: Setup ruby & bundler
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0.0'
+          bundler-cache: true
+
+      - name: Setup database
+        run: bundle exec rails db:migrate
+
+      - name: Run linter
+        run: bundle exec rubocop
+
+      - name: Run tests
+        run: bundle exec rspec
