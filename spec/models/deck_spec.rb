@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Player do
+RSpec.describe Deck do
   describe '#name' do
     context 'when absent' do
       let(:deck) { build(:deck, name: nil) }
