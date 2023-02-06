@@ -24,4 +24,13 @@ RSpec.describe Game do
       end
     end
   end
+
+  describe '#game_records' do
+    let(:game) { build(:game, game_records: [game_record]) }
+    let(:game_record) { build(:game_record) }
+
+    it 'has many' do
+      expect(game.game_records).to eq [game_record]
+    end
+  end
 end
