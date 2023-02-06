@@ -23,10 +23,11 @@ RSpec.describe Player do
       end
     end
   end
+
   describe '#decks' do
-    let(:player) { build(:player, decks:[deck]) }
-    let(:deck) { build(:deck)}
-    
+    let(:player) { build(:player, decks: [deck]) }
+    let(:deck) { build(:deck) }
+
     it 'has many' do
       expect(player.decks).to eq [deck]
     end
