@@ -1,6 +1,7 @@
 class GameRecord < ApplicationRecord
-  validates :record_type, presence: true
+  validates :result, presence: true
   belongs_to :player
   belongs_to :game
   belongs_to :deck
+  enum :result, %i[loss win draw]
 end

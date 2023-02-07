@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_06_214804) do
     t.integer "player_id", null: false
     t.integer "game_id", null: false
     t.integer "deck_id", null: false
-    t.string "record_type", null: false
+    t.integer "result", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_game_records_on_deck_id"

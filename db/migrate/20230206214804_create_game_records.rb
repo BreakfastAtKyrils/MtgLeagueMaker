@@ -4,7 +4,7 @@ class CreateGameRecords < ActiveRecord::Migration[7.0]
       t.references :player, null: false, foreign_key: true
       t.references :game, null: false, foreign_key: true
       t.references :deck, null: false, foreign_key: true
-      t.string :record_type, null: false
+      t.integer :result, null: false
 
       t.timestamps
     end

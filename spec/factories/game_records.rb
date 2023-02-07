@@ -3,6 +3,6 @@ FactoryBot.define do
     player
     game
     deck
-    record_type { 'MyString' }
+    result { 0 }
   end
 end

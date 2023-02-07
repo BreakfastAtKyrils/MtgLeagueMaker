@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'time'
 
 RSpec.describe Game do
   describe '#played_at' do
@@ -17,7 +16,7 @@ RSpec.describe Game do
     end
 
     context 'when present' do
-      let(:game) { build(:game, played_at: Time.zone.now) }
+      let(:game) { build(:game, played_at: Time.current) }
 
       it 'is valid' do
         expect(game.valid?).to be true
