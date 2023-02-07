@@ -1,9 +1,14 @@
-class PlayerController < ApplicationController
+class PlayersController < ApplicationController
   def index
-    render json: serialized_players
+    render json: serialized_players, status: :ok
   end
 
-  def show; end
+  def show
+    player = Player.find(params[:id])
+    render json: player, status: :ok
+  rescue ActiveRecord::RecordNotFound
+    render json: 'Record not found', status: :not_found
+  end
 
   def edit; end
 
