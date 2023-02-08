@@ -19,5 +19,3 @@ Player.create!([
     name: 'Pavle'
   }
 ])
-
-puts "Created #{Player.count} players"
