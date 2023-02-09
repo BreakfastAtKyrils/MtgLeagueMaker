@@ -1,0 +1,10 @@
+<h1>Listing Decks</h1>
+
+<tbody>
+    <% @decks.each do |deck| %>
+      <tr>
+        <td><%= deck.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
