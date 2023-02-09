@@ -1,2 +1,16 @@
-<h1>Player#show</h1>
-<p>Find me in app/views/player/show.html.erb</p>
+<h1>Player Name: <%= @player.name %></h1>
+
+<tbody>
+    <br>
+      <tr>
+        <td>Player's decks: </td>
+        <br>
+        <% @decks.each do |deck| %>
+        <tr>
+          <td><%= deck.name %></td>
+          <br>
+        </tr>
+        <% end %>
+      </tr>
+  </tbody>
+

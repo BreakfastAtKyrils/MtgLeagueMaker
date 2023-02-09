@@ -2,8 +2,17 @@
 
 <tbody>
     <% @players.each do |player| %>
+    <br>
+    <br>
       <tr>
-        <td><%= player.name %></td>
+        <td>Player name: <%=player.name %></td>
+        <br>
+        <td>Player's decks: <% decks = Deck.all.select { |deck| deck.player_id == player.id} %></td>
+        <% decks.each do |deck| %>
+        <tr>
+          <td><%= deck.name %></td>
+        </tr>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -16,8 +16,8 @@ RSpec.describe 'GET /players/:id' do
       expect(response).to have_http_status :ok
     end
 
-    it 'returns the correct body' do
-      expect(response_body).to include(name: 'Karl')
+    it 'returns the correct player name' do
+      expect(response_body.first[:name]).to eq(player.name)
     end
   end
 
