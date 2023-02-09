@@ -1,0 +1,10 @@
+<h1>Listing Players</h1>
+
+<tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
