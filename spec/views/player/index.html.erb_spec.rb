@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'spec_helper'
 
-RSpec.describe 'players/index' do
+RSpec.describe 'players/index', driver: :rack_test do
   before do
     karl = create(:player, name: 'Karl')
     jules = create(:player, name: 'Jules')

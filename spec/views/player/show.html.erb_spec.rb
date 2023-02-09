@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'player/show' do
+RSpec.describe 'player/show', driver: :rack_test do
   context 'when creating a player with 1 deck' do
     before do
       pavle = create(:player, name: 'Pavle')
