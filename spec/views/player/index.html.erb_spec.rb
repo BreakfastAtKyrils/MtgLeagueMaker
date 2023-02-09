@@ -3,14 +3,10 @@ require 'spec_helper'
 
 RSpec.describe 'players/index' do
   before do
-    assign(:players, [
-      Player.create!(
-        name: 'Karl'
-      ),
-      Player.create!(
-        name: 'Jules'
-      )
-    ])
+    karl = create(:player, name: 'Karl')
+    jules = create(:player, name: 'Jules')
+
+    assign(:players, [karl, jules])
   end
 
   context 'when creating 2 players' do

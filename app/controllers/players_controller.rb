@@ -1,6 +1,5 @@
 class PlayersController < ApplicationController
   def index
-    # render json: serialized_players, status: :ok
     @players = Player.all
 
     respond_to do |format|
