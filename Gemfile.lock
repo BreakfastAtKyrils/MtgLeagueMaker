@@ -287,7 +287,6 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
-  selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
