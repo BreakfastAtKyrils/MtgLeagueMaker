@@ -2,15 +2,16 @@
 
 <tbody>
     <br>
-      <tr>
+    <tr>
         <td>Player's decks: </td>
         <br>
         <% @player.decks.each do |deck| %>
-        <tr>
-          <td><%= deck.name %></td>
-          <br>
-        </tr>
-        <% end %>
-      </tr>
-  </tbody>
-
+            <tr>
+                <td>
+                    <%= deck.name %>
+                </td>
+                <br>
+            </tr>
+            <% end %>
+    </tr>
+</tbody>

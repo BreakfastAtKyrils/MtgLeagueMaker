@@ -18,7 +18,7 @@ RSpec.describe 'GET /decks/:id' do
     end
 
     it 'returns the correct body' do
-      expect(response_body).to include(name: 'Krark')
+      expect(response_body[:deck]).to include(name: 'Krark')
     end
   end
 

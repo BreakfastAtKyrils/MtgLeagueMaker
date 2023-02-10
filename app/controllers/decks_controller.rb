@@ -1,19 +1,12 @@
 class DecksController < ApplicationController
   def index
     @decks = Deck.all
-
-    respond_to do |format|
-      format.html
-
-      format.json do
-        render json: { decks: @decks }
-      end
-    end
+    render json: { decks: @decks }
   end
 
   def show
-    deck = Deck.find(params[:id])
-    render json: deck, status: :ok
+    @deck = Deck.find(params[:id])
+    render json: { deck: @deck }
   rescue ActiveRecord::RecordNotFound
     render json: 'Record not found', status: :not_found
   end
