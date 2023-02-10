@@ -17,7 +17,7 @@ RSpec.describe 'GET /players/:id' do
     end
 
     it 'returns the correct player name' do
-      expect(response_body.first[:name]).to eq(player.name)
+      expect(response_body[:player][:name]).to eq(player.name)
     end
   end
 

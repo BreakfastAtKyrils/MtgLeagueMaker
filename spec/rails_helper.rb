@@ -11,7 +11,7 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
-Selenium::WebDriver.logger.ignore(:deprecations)
+# Selenium::WebDriver.logger.ignore(:deprecations)
 RSpec.configure do |config|
   config.fixture_path = Rails.root.join('/spec/fixtures')
   config.use_transactional_fixtures = true

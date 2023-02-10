@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'decks/index', driver: :rack_test, type: :system do
+RSpec.describe 'decks/index' do
   describe 'deck index page' do
     context 'when no decks in the database' do
       it 'shows the right content' do

@@ -13,15 +13,12 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.includes(:decks).find(params[:id])
-    # would like 5 min talk about line 15 to fully understand it, then will delete both comments
-    # @player = Player.find(params[:id])
-    @decks = @player.decks
 
     respond_to do |format|
       format.html
 
       format.json do
-        render json: [@player, { decks: @decks }], status: :ok
+        render json: { player: @player }
       end
     end
   rescue ActiveRecord::RecordNotFound
