@@ -1,10 +1,11 @@
 <h1>Listing Players</h1>
 
 <tbody>
-    <% @players.each do |player| %>
-      <tr>
-        <td><%= player.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-
+  <% @players.each do |player| %>
+  <br />
+  <tr>
+    <td>Player name: <%=player.name %></td>
+    <br />
+  </tr>
+  <% end %>
+</tbody>
