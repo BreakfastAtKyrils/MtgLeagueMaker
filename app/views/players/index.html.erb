@@ -1,22 +1,11 @@
 <h1>Listing Players</h1>
 
 <tbody>
-    <% @players.each do |player| %>
-        <br>
-        <tr>
-            <td>Player name:
-                <%=player.name %>
-            </td>
-            <br>
-            <td>Player's decks:
-                <% player.decks.each do |deck| %>
-            </td>
-            <tr>
-                <td>
-                    <%= deck.name %>
-                </td>
-            </tr>
-            <% end %>
-        </tr>
-        <% end %>
+  <% @players.each do |player| %>
+  <br />
+  <tr>
+    <td>Player name: <%=player.name %></td>
+    <br />
+  </tr>
+  <% end %>
 </tbody>
