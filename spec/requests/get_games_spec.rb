@@ -8,7 +8,6 @@ RSpec.describe 'GET /games' do
 
   context 'when adding a game to the database' do
     it 'returns a non-empty array' do
-      # I know the following variable is not used, but I want to make sure the db has 1 game record for this test
       Game.create(played_at: DateTime.now.strftime('%B %d, %Y'))
 
       get '/games.json'
