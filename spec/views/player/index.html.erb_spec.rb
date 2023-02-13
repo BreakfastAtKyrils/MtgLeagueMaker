@@ -3,8 +3,8 @@ require 'spec_helper'
 
 RSpec.describe 'players/index' do
   before do
-    karl = create(:player, name: 'Karl')
-    jules = create(:player, name: 'Jules')
+    karl = build(:player, name: 'Karl', id: 1)
+    jules = build(:player, name: 'Jules', id: 2)
 
     assign(:players, [karl, jules])
   end
