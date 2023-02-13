@@ -1,7 +1,6 @@
 RSpec.describe 'players/show' do
-  let!(:pavle) {create :player, name: 'Pavle'}
-  let!(:jules) {create :player, name: 'Jules', decks: [nissa]}
-  let(:nissa) {build :deck, name: 'Nissa'}
+  let!(:jules) { create(:player, name: 'Jules', decks: [nissa]) }
+  let(:nissa) { build(:deck, name: 'Nissa') }
 
   before do
     visit players_path

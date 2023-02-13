@@ -7,7 +7,7 @@ RSpec.describe 'GET /games' do
   end
 
   context 'when some games are persisted' do
-    let!(:game) { create :game, played_at: DateTime.now.strftime('%B %d, %Y') }
+    let!(:game) { create(:game, played_at: DateTime.now.strftime('%B %d, %Y')) }
 
     before do
       get '/games.json'

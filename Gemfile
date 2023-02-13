@@ -31,6 +31,6 @@ group :development do
 end
 
 group :test do
-  gem 'webdrivers'
   gem 'database_cleaner-active_record'
+  gem 'webdrivers'
 end
