@@ -7,7 +7,8 @@ RSpec.describe 'GET /games' do
   end
 
   context 'when some games are persisted' do
-    let!(:game) { create(:game, played_at: DateTime.now.strftime('%B %d, %Y')) }
+    let!(:game1) { create(:game, played_at: DateTime.now.strftime('%B %d, %Y')) }
+    let!(:game2) { create(:game) }
 
     before do
       get '/games.json'
@@ -17,7 +18,8 @@ RSpec.describe 'GET /games' do
       body = JSON.parse(response.body, symbolize_names: true)
 
       expect(body[:games]).to match([
-        hash_including(id: game.id)
+        hash_including(id: game1.id),
+        hash_including(id: game2.id)
       ])
     end
 
@@ -25,7 +27,7 @@ RSpec.describe 'GET /games' do
       body = JSON.parse(response.body, symbolize_names: true)
       formatted_played_at = ActiveSupport::TimeZone['UTC'].parse((body[:games][0][:played_at]))
 
-      expect(game.played_at).to eq(formatted_played_at)
+      expect(game1.played_at).to eq(formatted_played_at)
     end
   end
 
