@@ -25,8 +25,6 @@ class PlayersController < ApplicationController
     render json: 'Record not found', status: :not_found
   end
 
-  def edit; end
-
   private
 
   def player_params

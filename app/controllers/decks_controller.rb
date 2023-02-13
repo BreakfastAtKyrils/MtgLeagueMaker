@@ -10,6 +10,4 @@ class DecksController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     render json: 'Record not found', status: :not_found
   end
-
-  def edit; end
 end
