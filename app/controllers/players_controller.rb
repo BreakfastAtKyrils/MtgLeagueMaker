@@ -25,6 +25,23 @@ class PlayersController < ApplicationController
     render json: 'Record not found', status: :not_found
   end
 
+  def new
+    @player = Player.new
+    render :new
+  end
+
+  def create
+    @player = Player.new(params.require(:player).permit(:name))
+
+    if @player.save
+      # flash[:success] = 
+      redirect_to players_url, notice: 'New player successfully added to the database'
+    else
+      flash.now[:error] = 'Player creation failed'
+      render :new
+    end
+  end
+
   private
 
   def player_params
