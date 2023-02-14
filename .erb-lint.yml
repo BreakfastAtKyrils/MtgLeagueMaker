@@ -1,0 +1,19 @@
+EnableDefaultLinters: true
+linters:
+  HardCodedString: 
+    enabled: false
+  ErbSafety:
+    enabled: true
+  Rubocop:
+    enabled: true
+    rubocop_config:
+      Rails:
+        Enabled: true
+      Rails/Present:
+        Enabled: true
+      Layout/InitialIndentation:
+        Enabled: false
+      Layout/TrailingEmptyLines:
+        Enabled: false
+      inherit_from:
+        - .rubocop.yml

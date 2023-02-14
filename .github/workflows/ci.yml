@@ -28,8 +28,11 @@ jobs:
       - name: Setup database
         run: bundle exec rails db:migrate
 
-      - name: Run linter
+      - name: Run Ruby linter
         run: bundle exec rubocop
+
+      # - name: Run ERB linter
+      #   run: bundle exec erblint --lint-all
 
       - name: Run tests
         run: bundle exec rspec
