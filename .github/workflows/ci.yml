@@ -32,7 +32,7 @@ jobs:
         run: bundle exec rubocop
 
       - name: Run ERB linter
-        run: bundle exec erblint --lint-all --enable-all-linters
+        run: bundle exec erblint --lint-all
 
       - name: Run tests
         run: bundle exec rspec

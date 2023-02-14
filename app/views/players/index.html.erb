@@ -2,10 +2,10 @@
 
 <tbody>
   <% @players.each do |player| %>
-  <br />
+  <br>
   <tr>
     <td>Player name: <%= link_to player.name, player_path(player) %></td>
-    <br />
+    <br>
   </tr>
   <% end %>
 </tbody>
