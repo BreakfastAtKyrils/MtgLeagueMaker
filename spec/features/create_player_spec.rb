@@ -42,6 +42,8 @@ RSpec.describe 'players/create' do
   context 'when submitting the form with no player name' do
     before do
       visit new_player_path
+      find_field('Enter Player Name').set('')
+      click_button 'Create Player'
     end
 
     it 're-renders the players/new page' do
@@ -49,7 +51,7 @@ RSpec.describe 'players/create' do
     end
 
     it 'displays an error message' do
-      
+      expect(page).to have_content('Please enter a valid name')
     end
   end
 end
