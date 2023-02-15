@@ -31,12 +31,12 @@ RSpec.describe 'players/create' do
     it 'displays a success notice message' do
       visit players_path
       expect(page).to have_content("New player successfully added to the database: #{player_name}")
-    end 
+    end
 
     it 'adds the player name to the players/index page' do
       visit players_path
       expect(page).to have_content(player_name)
-    end 
+    end
   end
 
   context 'when submitting the form with no player name' do
