@@ -31,3 +31,4 @@
 
 en:
   hello: "Hello world"
+  invalid_name: 'Please enter a valid name'

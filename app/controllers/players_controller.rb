@@ -38,7 +38,7 @@ class PlayersController < ApplicationController
         status: :created,
         notice: "New player successfully added to the database: #{@player.name}"
     else
-      redirect_to new_player_path, alert: 'Please enter a valid name'
+      redirect_to new_player_path, alert: t(:invalid_name)
     end
   end
 
