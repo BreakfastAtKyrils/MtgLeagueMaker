@@ -34,8 +34,7 @@ class PlayersController < ApplicationController
     @player = Player.new(params.require(:player).permit(:name))
 
     if @player.save
-      # flash[:success] = 
-      redirect_to players_url, notice: 'New player successfully added to the database'
+      redirect_to players_url, status: :created, notice: 'New player successfully added to the database'
     else
       flash.now[:error] = 'Player creation failed'
       render :new
