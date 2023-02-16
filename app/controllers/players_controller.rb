@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-  rescue_from ActiveRecord::RecordInvalid, with: :invalid
+  rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
 
   def index
     @players = Player.all
@@ -37,7 +37,7 @@ class PlayersController < ApplicationController
     if @player.save
       player_successfully_saved
     else
-      player_unsuccessfully_saved
+      invalid_record
     end
   end
 
@@ -60,7 +60,7 @@ class PlayersController < ApplicationController
     end
   end
 
-  def player_unsuccessfully_saved
+  def invalid_record
     respond_to do |format|
       format.html do
         redirect_to new_player_path, alert: t(:invalid_name)
@@ -73,9 +73,5 @@ class PlayersController < ApplicationController
 
   def not_found
     render json: 'Record not found', status: :not_found
-  end
-
-  def invalid
-    render json: { error: invalid.record.errors.full_messages }, status: :unprocessable_entity
   end
 end
