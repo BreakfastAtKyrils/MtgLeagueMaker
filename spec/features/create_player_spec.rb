@@ -7,12 +7,12 @@ RSpec.describe 'players/create' do
     visit players_path
   end
 
-  context 'when clicking on "Create New Player"' do
+  context 'when clicking the create player button' do
     before do
       click_on('Create a New Player')
     end
 
-    it 'navigates to the player/new path' do
+    it 'navitages to the new player form' do
       expect(page).to have_current_path(new_player_path)
     end
   end
@@ -24,7 +24,7 @@ RSpec.describe 'players/create' do
       click_button 'Create Player'
     end
 
-    it 'redirects to the players/index' do
+    it 'redirects to the list of players' do
       expect(page).to have_current_path(players_path)
     end
 
@@ -33,7 +33,7 @@ RSpec.describe 'players/create' do
       expect(page).to have_content("New player successfully added to the database: #{player_name}")
     end
 
-    it 'adds the player name to the players/index page' do
+    it 'displays the player in the list of players' do
       visit players_path
       expect(page).to have_content(player_name)
     end
@@ -46,7 +46,7 @@ RSpec.describe 'players/create' do
       click_button 'Create Player'
     end
 
-    it 're-renders the players/new page' do
+    it 'stays on the form' do
       expect(page).to have_current_path(new_player_path)
     end
 
