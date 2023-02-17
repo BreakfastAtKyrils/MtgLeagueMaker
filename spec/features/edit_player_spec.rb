@@ -44,6 +44,7 @@ RSpec.describe 'player/update' do
         find_field('Enter New Player Name').set('')
         click_button 'Update Player'
       end
+
       it 'stays on the form' do
         expect(page).to have_current_path(edit_player_path(player))
       end

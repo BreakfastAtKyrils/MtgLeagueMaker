@@ -78,7 +78,7 @@ class PlayersController < ApplicationController
       format.html do
         redirect_to player_path,
           status: :ok,
-          notice: 'Player successfully updated.'
+          notice: t(:player_successful_updated)
       end
       format.json do
         render json: { player: @player }, status: :ok
