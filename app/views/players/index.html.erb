@@ -1,12 +1,6 @@
-<div class="level">
-  <div class="level-left title">
-    <h1>Listing Players</h1>
-  </div>
-
-  <div class="level-right">
-    <%= link_to 'Create a New Player', new_player_path, class: 'button is-light' %>
-  </div>
-</div>
+<%= render layout: 'components/nav_bar', locals: { title: 'Listing Players' } do %>
+  <%= link_to 'Create a New Player', new_player_path, class: 'button is-light' %>
+<% end %>
 
 <table class="table is-bordered">
   <thead>
