@@ -1,0 +1,6 @@
+<h1>Create New Player</h1>
+
+<%= form_with model: @player, url: players_path, method: :post, local: true do |f| %>
+  <%= f.text_field :name, placeholder: 'Enter Player Name' %>
+  <%= f.submit %>
+<% end %>
