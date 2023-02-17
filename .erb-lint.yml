@@ -1,4 +1,7 @@
 EnableDefaultLinters: true
+exclude:
+  - '**/vendor/**/*'
+  - '**/node_modules/**/*'
 linters:
   HardCodedString:
     enabled: false
