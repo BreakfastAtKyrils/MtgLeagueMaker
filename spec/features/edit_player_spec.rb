@@ -29,12 +29,10 @@ RSpec.describe 'player/update' do
       end
 
       it 'updates the player name' do
-        visit player_path(player)
         expect(page).to have_content(valid_new_player_name)
       end
 
       it 'displays a success notice message' do
-        visit player_path(player)
         expect(page).to have_content('Player successfully updated.')
       end
     end

@@ -38,7 +38,7 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
 
     if @player.save
-      player_successfully_saved
+      player_successfully_created
     else
       invalid_record(redirect_path: new_player_path)
     end
@@ -46,8 +46,9 @@ class PlayersController < ApplicationController
 
   def update
     @player = Player.find(params[:id])
+    @player.name = player_params[:name]
 
-    if @player.update(player_params)
+    if @player.save
       player_successfully_updated
     else
       invalid_record(redirect_path: edit_player_path)
@@ -60,7 +61,7 @@ class PlayersController < ApplicationController
     params.require(:player).permit(:name)
   end
 
-  def player_successfully_saved
+  def player_successfully_created
     respond_to do |format|
       format.html do
         redirect_to players_path,
@@ -76,8 +77,7 @@ class PlayersController < ApplicationController
   def player_successfully_updated
     respond_to do |format|
       format.html do
-        redirect_to player_path,
-          status: :ok,
+        redirect_to player_path(@player),
           notice: t(:player_successful_updated)
       end
       format.json do
