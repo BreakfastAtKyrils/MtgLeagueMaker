@@ -40,6 +40,16 @@ class PlayersController < ApplicationController
     end
   end
 
+  def update
+    @player = Player.find(params[:id])
+
+    if @player.update(name: params[:player][:name])
+      player_successfully_updated
+    else
+      invalid_update
+    end
+  end
+
   private
 
   def player_params
@@ -59,6 +69,19 @@ class PlayersController < ApplicationController
     end
   end
 
+  def player_successfully_updated
+    respond_to do |format|
+      format.html do
+        redirect_to player_path,
+          status: :ok,
+          notice: 'Player successfully updated.'
+      end
+      format.json do
+        render json: { player: @player }, status: :ok
+      end
+    end
+  end
+
   def invalid_record
     respond_to do |format|
       format.html do
@@ -66,6 +89,17 @@ class PlayersController < ApplicationController
       end
       format.json do
         render json: { errors: @player.errors }, status: :unprocessable_entity
+      end
+    end
+  end
+
+  def invalid_update
+    respond_to do |format|
+      format.html do
+        # redirect_to new_player_path, alert: t(:invalid_name)
+      end
+      format.json do
+        render json: { errors: @player.errors }, status: :not_found
       end
     end
   end
