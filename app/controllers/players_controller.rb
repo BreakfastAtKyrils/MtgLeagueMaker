@@ -30,6 +30,10 @@ class PlayersController < ApplicationController
     @player = Player.new
   end
 
+  def edit
+    @player = Player.find(params[:id])
+  end
+
   def create
     @player = Player.new(player_params)
 
@@ -96,7 +100,7 @@ class PlayersController < ApplicationController
   def invalid_update
     respond_to do |format|
       format.html do
-        # redirect_to new_player_path, alert: t(:invalid_name)
+        redirect_to edit_player_path, alert: t(:invalid_name)
       end
       format.json do
         render json: { errors: @player.errors }, status: :not_found
