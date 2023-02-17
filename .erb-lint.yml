@@ -1,6 +1,9 @@
 EnableDefaultLinters: true
+exclude:
+  - '**/vendor/**/*'
+  - '**/node_modules/**/*'
 linters:
-  HardCodedString: 
+  HardCodedString:
     enabled: false
   ErbSafety:
     enabled: true
@@ -14,6 +17,8 @@ linters:
       Layout/InitialIndentation:
         Enabled: false
       Layout/TrailingEmptyLines:
+        Enabled: false
+      Layout/FirstHashElementIndentation:
         Enabled: false
       inherit_from:
         - .rubocop.yml
