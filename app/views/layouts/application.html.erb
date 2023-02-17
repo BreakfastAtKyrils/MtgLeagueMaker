@@ -14,12 +14,18 @@
   </head>
 
   <body>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-success"><%= alert %></p>
-    <% end %>
-    <%= yield %>
+    <section class="section">
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+
+      <% if alert %>
+        <p class="alert alert-success"><%= alert %></p>
+      <% end %>
+
+      <div class="container">
+        <%= yield %>
+      </div>
+    </section>
   </body>
 </html>

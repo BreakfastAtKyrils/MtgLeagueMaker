@@ -1,29 +1,25 @@
-<section class="section">
-  <div class='container'>
-    <div class="level">
-      <div class="level-left title">
-        <h1>Listing Players</h1>
-      </div>
-
-      <div class="level-right">
-        <%= link_to 'Create a New Player', new_player_path, class: 'button is-light' %>
-      </div>
-    </div>
-
-    <table class="table is-bordered">
-      <thead>
-        <tr>
-          <th>Player</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @players.each do |player| %>
-          <tr>
-            <td><%= link_to player.name, player_path(player) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="level">
+  <div class="level-left title">
+    <h1>Listing Players</h1>
   </div>
-</section>
+
+  <div class="level-right">
+    <%= link_to 'Create a New Player', new_player_path, class: 'button is-light' %>
+  </div>
+</div>
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Player</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= link_to player.name, player_path(player) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
