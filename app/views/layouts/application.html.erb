@@ -16,11 +16,15 @@
   <body>
     <section class="section">
       <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
+        <div class="notification is-success">
+          <%= notice %>
+        </div>
       <% end %>
 
       <% if alert %>
-        <p class="alert alert-success"><%= alert %></p>
+        <div class="notification is-danger">
+          <%= alert %>
+        </div>
       <% end %>
 
       <div class="container">
