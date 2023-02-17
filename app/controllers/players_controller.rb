@@ -28,11 +28,10 @@ class PlayersController < ApplicationController
 
   def new
     @player = Player.new
-    render
   end
 
   def create
-    @player = Player.new(params.require(:player).permit(:name))
+    @player = Player.new(player_params)
 
     if @player.save
       player_successfully_saved
@@ -66,7 +65,7 @@ class PlayersController < ApplicationController
         redirect_to new_player_path, alert: t(:invalid_name)
       end
       format.json do
-        render json: 'Invalid Record', status: :unprocessable_entity
+        render json: { errors: @player.errors }, status: :unprocessable_entity
       end
     end
   end

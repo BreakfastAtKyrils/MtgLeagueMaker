@@ -4,16 +4,18 @@ RSpec.describe 'POST /players' do
   player_name = 'Karl'
 
   context 'when provided with a player name' do
-    it 'returns the correct status code' do
+    before do
       post '/players.json', params: { player: { name: player_name } }
+    end
+
+    it 'returns the correct status code' do
       expect(response).to have_http_status :created
     end
 
-    it 'persists the player in the database' do
-      post '/players.json', params: { player: { name: player_name } }
-      last_player_name = Player.last[:name]
+    it 'returns the created player' do
+      player = JSON.parse(response.body, symbolize_names: true)[:player]
 
-      expect(player_name).to eq last_player_name
+      expect(player).to include(name: player_name)
     end
   end
 
@@ -27,7 +29,8 @@ RSpec.describe 'POST /players' do
     end
 
     it 'returns a json error message' do
-      expect(response.body).to eq 'Invalid Record'
+      body = JSON.parse(response.body, symbolize_names: true)
+      expect(body[:errors]).to eq({ name: ["can't be blank"] })
     end
   end
 end

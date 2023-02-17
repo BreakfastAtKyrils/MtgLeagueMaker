@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'players/create' do
-  player_name = 'Max'
-
   before do
     visit players_path
   end
@@ -17,41 +15,45 @@ RSpec.describe 'players/create' do
     end
   end
 
-  context 'when submitting the form with player_name = Max' do
-    before do
-      click_on('Create a New Player')
-      find_field('Enter Player Name').set(player_name)
-      click_button 'Create Player'
+  context 'when submitting the form' do
+    context 'with a player name' do
+      player_name = 'Max'
+
+      before do
+        click_on('Create a New Player')
+        find_field('Enter Player Name').set(player_name)
+        click_button 'Create Player'
+      end
+
+      it 'redirects to the list of players' do
+        expect(page).to have_current_path(players_path)
+      end
+
+      it 'displays a success notice message' do
+        visit players_path
+        expect(page).to have_content("New player successfully added to the database: #{player_name}")
+      end
+
+      it 'displays the player in the list of players' do
+        visit players_path
+        expect(page).to have_content(player_name)
+      end
     end
 
-    it 'redirects to the list of players' do
-      expect(page).to have_current_path(players_path)
-    end
+    context 'without a player name' do
+      before do
+        visit new_player_path
+        find_field('Enter Player Name').set('')
+        click_button 'Create Player'
+      end
 
-    it 'displays a success notice message' do
-      visit players_path
-      expect(page).to have_content("New player successfully added to the database: #{player_name}")
-    end
+      it 'stays on the form' do
+        expect(page).to have_current_path(new_player_path)
+      end
 
-    it 'displays the player in the list of players' do
-      visit players_path
-      expect(page).to have_content(player_name)
-    end
-  end
-
-  context 'when submitting the form with no player name' do
-    before do
-      visit new_player_path
-      find_field('Enter Player Name').set('')
-      click_button 'Create Player'
-    end
-
-    it 'stays on the form' do
-      expect(page).to have_current_path(new_player_path)
-    end
-
-    it 'displays an error message' do
-      expect(page).to have_content('Please enter a valid name')
+      it 'displays an error message' do
+        expect(page).to have_content('Please enter a valid name')
+      end
     end
   end
 end
