@@ -1,16 +1,22 @@
-<h1>Player Name: <%= @player.name %></h1>
-<tbody>
-    <br>
+<%= render partial: 'components/nav_bar', locals: {
+  title: @player.name
+} %>
+
+<table class="table is-bordered">
+  <thead>
     <tr>
-        <td>Player's decks: </td>
-        <br>
-        <% @player.decks.each do |deck| %>
-            <tr>
-                <td>
-                    <%= deck.name %>
-                </td>
-                <br>
-            </tr>
-        <% end %>
+      <th>Deck</th>
     </tr>
-</tbody>
+  </thead>
+
+  <tbody>
+    <% @player.decks.each do |deck| %>
+      <tr>
+        <td>
+          <%= deck.name %>
+        </td>
+        <br>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

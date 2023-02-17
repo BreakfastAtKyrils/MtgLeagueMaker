@@ -8,15 +8,28 @@
 
     <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@creativebulma/bulma-tooltip@1.0.2/dist/bulma-tooltip.min.css">
   </head>
 
   <body>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-success"><%= alert %></p>
-    <% end %>
-    <%= yield %>
+    <section class="section">
+      <% if notice %>
+        <div class="notification is-success">
+          <%= notice %>
+        </div>
+      <% end %>
+
+      <% if alert %>
+        <div class="notification is-danger">
+          <%= alert %>
+        </div>
+      <% end %>
+
+      <div class="container">
+        <%= yield %>
+      </div>
+    </section>
   </body>
 </html>

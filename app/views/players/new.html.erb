@@ -1,4 +1,6 @@
-<h1>Create New Player</h1>
+<%= render partial: 'components/nav_bar', locals: {
+  title: 'Create New Player'
+} %>
 
 <%= form_with model: @player, url: players_path, method: :post, local: true do |f| %>
   <%= f.text_field :name, placeholder: 'Enter Player Name' %>
