@@ -40,17 +40,17 @@ class PlayersController < ApplicationController
     if @player.save
       player_successfully_saved
     else
-      invalid_record
+      invalid_record(redirect_path: new_player_path)
     end
   end
 
   def update
     @player = Player.find(params[:id])
 
-    if @player.update(name: params[:player][:name])
+    if @player.update(player_params)
       player_successfully_updated
     else
-      invalid_update
+      invalid_record(redirect_path: edit_player_path)
     end
   end
 
@@ -86,24 +86,13 @@ class PlayersController < ApplicationController
     end
   end
 
-  def invalid_record
+  def invalid_record(redirect_path:)
     respond_to do |format|
       format.html do
-        redirect_to new_player_path, alert: t(:invalid_name)
+        redirect_to redirect_path, alert: t(:invalid_name)
       end
       format.json do
         render json: { errors: @player.errors }, status: :unprocessable_entity
-      end
-    end
-  end
-
-  def invalid_update
-    respond_to do |format|
-      format.html do
-        redirect_to edit_player_path, alert: t(:invalid_name)
-      end
-      format.json do
-        render json: { errors: @player.errors }, status: :not_found
       end
     end
   end
