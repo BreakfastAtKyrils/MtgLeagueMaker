@@ -16,6 +16,12 @@ RSpec.describe 'DELETE /players.json' do
     it 'deletes the player from the database' do
       expect { Player.find(player.id) }.to raise_error(ActiveRecord::RecordNotFound)
     end
+
+    it 'returns the player as json' do
+      returned_player = JSON.parse(response.body, symbolize_names: true)[:player]
+
+      expect(returned_player).to include(name: player.name, id: player.id)
+    end
   end
 
   context 'when given an invalid player id' do

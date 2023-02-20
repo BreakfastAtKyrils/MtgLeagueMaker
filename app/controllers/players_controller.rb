@@ -103,7 +103,7 @@ class PlayersController < ApplicationController
           notice: t(:player_successful_deletion)
       end
       format.json do
-        render json: 'player successfully deleted'
+        render json: { player: @player }, status: :ok
       end
     end
   end
