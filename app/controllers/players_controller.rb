@@ -57,6 +57,7 @@ class PlayersController < ApplicationController
 
   def destroy
     @player = Player.find(params[:id])
+
     if @player.destroy
       player_successfully_deleted
     else
@@ -109,12 +110,8 @@ class PlayersController < ApplicationController
 
   def invalid_record(redirect_path:)
     respond_to do |format|
-      format.html do
-        redirect_to redirect_path, alert: t(:invalid_name)
-      end
-      format.json do
-        render json: { errors: @player.errors }, status: :unprocessable_entity
-      end
+      format.html { redirect_to redirect_path, alert: t(:invalid_name) }
+      format.json { render json: { errors: @player.errors }, status: :unprocessable_entity }
     end
   end
 
