@@ -32,3 +32,4 @@
 en:
   invalid_name: 'Please enter a valid name'
   player_successful_updated: 'Player successfully updated.'
+  player_successful_deletion: 'Player successfully deleted.'

@@ -57,8 +57,7 @@ class PlayersController < ApplicationController
 
   def destroy
     @player = Player.find(params[:id])
-
-    if Player.delete(@player.id)
+    if @player.destroy
       player_successfully_deleted
     else
       invalid_record(redirect_path: player_path(@player))
@@ -99,13 +98,13 @@ class PlayersController < ApplicationController
   def player_successfully_deleted
     respond_to do |format|
       format.html do
-        # redirect_to player_path(@player),
-        #   notice: t(:player_successful_updated)
+        redirect_to players_path,
+          notice: t(:player_successful_deletion)
       end
       format.json do
         render json: 'player successfully deleted'
       end
-    end 
+    end
   end
 
   def invalid_record(redirect_path:)

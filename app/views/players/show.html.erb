@@ -10,7 +10,8 @@
     <br>
     <br>
     <h3>
-    <h3><%= link_to 'Edit Player', edit_player_path(@player) %></h3>
+    <h3><%= link_to 'Edit Player', edit_player_path(@player), style: 'color:blue' %></h3>
+    <h3><%= link_to 'Delete Player', player_path(@player), data: { 'turbo-method': :delete }, style: 'color:red' %></h3>
 </tbody>
   </thead>
 
