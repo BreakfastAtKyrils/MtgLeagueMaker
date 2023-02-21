@@ -38,7 +38,7 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
 
     if @player.save
-      player_successfully_saved
+      player_successfully_created
     else
       invalid_record(redirect_path: new_player_path)
     end
@@ -46,11 +46,22 @@ class PlayersController < ApplicationController
 
   def update
     @player = Player.find(params[:id])
+    @player.name = player_params[:name]
 
-    if @player.update(player_params)
+    if @player.save
       player_successfully_updated
     else
       invalid_record(redirect_path: edit_player_path)
+    end
+  end
+
+  def destroy
+    @player = Player.find(params[:id])
+
+    if @player.destroy
+      player_successfully_deleted
+    else
+      invalid_record(redirect_path: player_path(@player))
     end
   end
 
@@ -60,7 +71,7 @@ class PlayersController < ApplicationController
     params.require(:player).permit(:name)
   end
 
-  def player_successfully_saved
+  def player_successfully_created
     respond_to do |format|
       format.html do
         redirect_to players_path,
@@ -76,9 +87,20 @@ class PlayersController < ApplicationController
   def player_successfully_updated
     respond_to do |format|
       format.html do
-        redirect_to player_path,
-          status: :ok,
+        redirect_to player_path(@player),
           notice: t(:player_successful_updated)
+      end
+      format.json do
+        render json: { player: @player }, status: :ok
+      end
+    end
+  end
+
+  def player_successfully_deleted
+    respond_to do |format|
+      format.html do
+        redirect_to players_path,
+          notice: t(:player_successful_deletion)
       end
       format.json do
         render json: { player: @player }, status: :ok
@@ -88,12 +110,8 @@ class PlayersController < ApplicationController
 
   def invalid_record(redirect_path:)
     respond_to do |format|
-      format.html do
-        redirect_to redirect_path, alert: t(:invalid_name)
-      end
-      format.json do
-        render json: { errors: @player.errors }, status: :unprocessable_entity
-      end
+      format.html { redirect_to redirect_path, alert: t(:invalid_name) }
+      format.json { render json: { errors: @player.errors }, status: :unprocessable_entity }
     end
   end
 
