@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'player/update' do
+RSpec.describe 'player/delete' do
   let!(:player) { Player.create(name: 'Karl') }
 
   before do
