@@ -32,7 +32,8 @@ RSpec.describe 'GET /players/:id' do
     end
 
     it 'returns the correct body' do
-      expect(response.body).to eq 'Record not found'
+      body = JSON.parse(response.body, symbolize_names: true)
+      expect(body).to include({ errors: ['Record not found'] })
     end
   end
 end

@@ -116,6 +116,6 @@ class PlayersController < ApplicationController
   end
 
   def not_found
-    render json: 'Record not found', status: :not_found
+    render json: { errors: ['Record not found'] }, status: :not_found
   end
 end

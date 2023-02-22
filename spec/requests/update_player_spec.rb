@@ -32,7 +32,8 @@ RSpec.describe 'PUT /players.json' do
     end
 
     it 'returns a json error message' do
-      expect(response.body).to eq 'Record not found'
+      body = JSON.parse(response.body, symbolize_names: true)
+      expect(body).to include({ errors: ['Record not found'] })
     end
   end
 end
