@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.shared_examples 'a delete request' do
   context 'when given a valid resource id' do
     before do
-      delete valid_path
+      delete path
     end
 
     it 'returns the correct http response' do
@@ -22,7 +22,8 @@ RSpec.shared_examples 'a delete request' do
 
   context 'when given an invalid resource id' do
     before do
-      delete invalid_path
+      record.delete
+      delete path
     end
 
     it 'returns the correct http response' do
