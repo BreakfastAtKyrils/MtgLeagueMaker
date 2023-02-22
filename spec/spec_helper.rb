@@ -1,4 +1,5 @@
 require 'capybara/rspec'
+Dir['./spec/support/**/*.rb'].each { |file| require file }
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
