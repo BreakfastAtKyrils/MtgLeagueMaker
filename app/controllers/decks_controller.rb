@@ -8,6 +8,6 @@ class DecksController < ApplicationController
     @deck = Deck.find(params[:id])
     render json: { deck: @deck }
   rescue ActiveRecord::RecordNotFound
-    render json: 'Record not found', status: :not_found
+    render json: { errors: ['Record not found'] }, status: :not_found
   end
 end

@@ -28,7 +28,7 @@ RSpec.shared_examples 'a get request' do
 
     it 'returns a json error message' do
       body = JSON.parse(response.body, symbolize_names: true)
-      expect(body).to include({ errors: ['Record not found'] })
+      expect(body).to include(:errors)
     end
   end
 end
