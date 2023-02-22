@@ -16,4 +16,17 @@ RSpec.describe 'players' do
       { player: hash_including(name: 'Karl') }
     end
   end
+
+  it_behaves_like 'a post request' do
+    let(:path) { '/players.json' }
+    let(:valid_request_params) do
+      { player: { name: 'Pavle' } }
+    end
+    let(:invalid_request_params) do
+      { player: { name: nil } }
+    end
+    let(:expected_json_attributes) do
+      { player: hash_including(name: 'Pavle') }
+    end
+  end
 end
