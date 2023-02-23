@@ -28,6 +28,18 @@ class DecksController < ApplicationController
     end
   end
 
+  def update
+    @deck = Deck.find(params[:id])
+    @deck.name = deck_params[:name]
+    @deck.player_id = deck_params[:player_id]
+
+    if @deck.save
+      deck_successfully_updated
+    else
+      invalid_record(redirect_path: edit_deck_path)
+    end
+  end
+
   def destroy
     @deck = Deck.find(params[:id])
 
@@ -62,6 +74,18 @@ class DecksController < ApplicationController
       format.html do
         redirect_to decks_path,
           notice: t(:deck_successful_deletion)
+      end
+      format.json do
+        render json: { deck: @deck }, status: :ok
+      end
+    end
+  end
+
+  def deck_successfully_updated
+    respond_to do |format|
+      format.html do
+        redirect_to deck_path(@deck),
+          notice: t(:deck_successful_updated)
       end
       format.json do
         render json: { deck: @deck }, status: :ok
