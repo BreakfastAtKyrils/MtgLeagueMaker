@@ -6,12 +6,10 @@ class DecksController < ApplicationController
 
   def index
     @decks = @player.decks
+
     respond_to do |format|
       format.html
-
-      format.json do
-        render json: { decks: @decks }
-      end
+      format.json { render json: { decks: @decks } }
     end
   end
 
