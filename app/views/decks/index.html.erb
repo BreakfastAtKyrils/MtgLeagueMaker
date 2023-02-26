@@ -1,0 +1,19 @@
+<%= render layout: 'components/nav_bar', locals: { title: 'Listing Decks' } do %>
+  <%= link_to 'Add a New Deck', new_player_deck_path, class: 'button is-light' %>
+<% end %>
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Deck</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @decks.each do |deck| %>
+      <tr>
+        <td><%= link_to deck.name, player_deck_path(@player, deck.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
