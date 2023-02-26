@@ -31,7 +31,28 @@ class DecksController < ApplicationController
     if @deck.save
       deck_successfully_created
     else
-      invalid_record(redirect_path: root)
+      invalid_record(redirect_path: "/players/#{player.id}/decks")
+    end
+  end
+
+  def update
+    @deck = @player.decks.find(params[:id])
+    @deck.name = deck_params[:name]
+
+    if @deck.save
+      deck_successfully_updated
+    else
+      invalid_record(redirect_path: "/players/#{player.id}/decks")
+    end
+  end
+
+  def destroy
+    @deck = @player.decks.find(params[:id])
+
+    if @deck.destroy
+      deck_successfully_deleted
+    else
+      invalid_record(redirect_path: "/players/#{player.id}/decks")
     end
   end
 
@@ -62,29 +83,29 @@ class DecksController < ApplicationController
     end
   end
 
-  # def deck_successfully_deleted
-  #   respond_to do |format|
-  #     format.html do
-  #       redirect_to decks_path,
-  #         notice: t(:deck_successful_deletion)
-  #     end
-  #     format.json do
-  #       render json: { deck: @deck }, status: :ok
-  #     end
-  #   end
-  # end
+  def deck_successfully_deleted
+    respond_to do |format|
+      format.html do
+        redirect_to  "/players/#{player.id}/decks",
+          notice: t(:deck_successful_deletion)
+      end
+      format.json do
+        render json: { deck: @deck }, status: :ok
+      end
+    end
+  end
 
-  # def deck_successfully_updated
-  #   respond_to do |format|
-  #     format.html do
-  #       redirect_to deck_path(@deck),
-  #         notice: t(:deck_successful_updated)
-  #     end
-  #     format.json do
-  #       render json: { deck: @deck }, status: :ok
-  #     end
-  #   end
-  # end
+  def deck_successfully_updated
+    respond_to do |format|
+      format.html do
+        redirect_to "/players/#{player.id}/decks",
+          notice: t(:deck_successful_updated)
+      end
+      format.json do
+        render json: { deck: @deck }, status: :ok
+      end
+    end
+  end
 
   def invalid_record(redirect_path:)
     respond_to do |format|
