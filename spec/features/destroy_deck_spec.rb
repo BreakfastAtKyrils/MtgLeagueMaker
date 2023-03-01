@@ -13,7 +13,7 @@ RSpec.describe 'deck/destroy' do
 
   context 'when clicking on the destroy button' do
     it 'redirects to the player page' do
-      expect(page).to have_current_path(player_path(player))
+      expect(page).to have_current_path(player_decks_path(player))
     end
 
     it 'removes the deck from the player decks' do
