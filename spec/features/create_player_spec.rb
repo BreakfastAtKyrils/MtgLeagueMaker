@@ -7,7 +7,7 @@ RSpec.describe 'players/create' do
 
   context 'when clicking the create player button' do
     before do
-      click_on('Create a New Player')
+      click_on 'Create a New Player'
     end
 
     it 'navitages to the new player form' do
@@ -20,7 +20,7 @@ RSpec.describe 'players/create' do
       player_name = 'Max'
 
       before do
-        click_on('Create a New Player')
+        click_on 'Create a New Player'
         find_field('Enter Player Name').set(player_name)
         click_button 'Create Player'
       end

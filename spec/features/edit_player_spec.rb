@@ -5,8 +5,8 @@ RSpec.describe 'player/update' do
 
   before do
     visit players_path
-    click_on(player.name.to_s)
-    click_on('Edit Player')
+    click_on player.name
+    click_on 'Edit Player'
   end
 
   context 'when clicking on the edit button' do
