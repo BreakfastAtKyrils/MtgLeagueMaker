@@ -12,18 +12,12 @@
     <tr>
       <th>Deck</th>
     </tr>
-    <br>
-    <br>
-    <h3>
-
   </thead>
+
   <tbody>
     <% @player.decks.each do |deck| %>
       <tr>
-        <td>
-          <%= deck.name %>
-        </td>
-        <br>
+        <td><%= link_to deck.name, player_deck_path(@player, deck.id) %></td>
       </tr>
     <% end %>
   </tbody>

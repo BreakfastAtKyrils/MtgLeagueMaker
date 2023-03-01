@@ -29,6 +29,10 @@ class DecksController < ApplicationController
     @deck = @player.decks.build
   end
 
+  def edit
+    @deck = @player.decks.find(params[:id])
+  end
+
   def create
     @deck = @player.decks.build(deck_params)
 

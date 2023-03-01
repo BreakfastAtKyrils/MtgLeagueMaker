@@ -1,0 +1,6 @@
+<h1>Edit Deck</h1>
+
+<%= form_with model: [@player, @deck], url: "/players/#{@player.id}/decks/#{@deck.id}", method: :put, local: true do |f| %>
+    <%= f.text_field :name, placeholder: 'Enter New Deck Name' %>
+    <%= f.submit %>
+<% end %>

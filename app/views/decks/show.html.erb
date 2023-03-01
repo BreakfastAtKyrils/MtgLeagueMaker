@@ -1,4 +1,10 @@
 <table class="table is-bordered">
+  <div class="buttons">
+    <%= link_to 'Edit Deck', "/players/#{@player.id}/decks/#{@deck.id}/edit", class: 'button is-warning' %>
+    <%# <%= link_to 'Delete Player', player_path(@player),
+          data: { 'turbo-method': :delete, turbo_confirm: 'Are you sure?' }, class: 'button is-danger' %>
+  </div>
+
   <thead>
     <tr>
       <%= @deck.name %>
