@@ -10,9 +10,10 @@ RSpec.describe 'GET /players' do
     let!(:player) { create(:player, name: 'francis') }
 
     it 'returns the list of players' do
+      player.name = 'francis'
       get '/players.json'
       body = JSON.parse(response.body, symbolize_names: true)
-      expect(body[:players]).to include(hash_including(name: player.name))
+      expect(body[:players]).to include(hash_including(name: 'francis'))
     end
   end
 
