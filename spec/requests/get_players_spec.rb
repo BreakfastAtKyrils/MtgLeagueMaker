@@ -8,15 +8,17 @@ RSpec.describe 'GET /players' do
 
   context 'when there are players in the database' do
     let!(:player) { create(:player, name: 'francis') }
+    let(:body) do
+      get '/players.json'
+      JSON.parse(response.body, symbolize_names: true)
+    end
 
     it 'returns the list of players' do
-      get '/players.json'
-      body = JSON.parse(response.body, symbolize_names: true)
       expect(body[:players]).to include(hash_including(name: player.name))
     end
 
     it 'returns the player names correctly' do
-      expect(body[:players][:name]).to eq 'francis'
+      expect(body[:players][0][:name]).to eq 'francis'
     end
   end
 
