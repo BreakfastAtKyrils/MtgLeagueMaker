@@ -11,7 +11,7 @@ RSpec.describe 'players/show' do
 
   context 'when clicking on a player name' do
     before do
-      click_on('Jules')
+      click_on 'Jules'
     end
 
     it 'navigates to the player path' do
@@ -19,7 +19,7 @@ RSpec.describe 'players/show' do
     end
 
     it 'renders a page with the player name' do
-      expect(page).to have_content(jules.name)
+      expect(page).to have_content('Jules')
     end
 
     it 'renders a page with the deck names' do

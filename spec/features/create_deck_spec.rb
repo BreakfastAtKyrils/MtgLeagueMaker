@@ -5,7 +5,7 @@ RSpec.describe 'decks/create' do
 
   before do
     visit player_path(player)
-    click_on('Add Deck')
+    click_on 'Add Deck'
   end
 
   context 'when clicking the add deck button' do

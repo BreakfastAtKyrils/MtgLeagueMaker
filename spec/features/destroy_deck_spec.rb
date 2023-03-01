@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'deck/destroy' do
-  let!(:player) { Player.create(name: 'Karl') }
-  let!(:deck) { Deck.create(name: 'Llanowar Elf', player: player) }
+  let!(:player) { create(:player, name: 'Karl') }
+  let!(:deck) { create(:deck, name: 'Llanowar Elf', player: player) }
 
   before do
     visit players_path
-    click_on(player.name.to_s)
-    click_on(deck.name.to_s)
-    click_on('Delete Deck')
+    click_on player.name
+    click_on deck.name
+    click_on 'Delete'
   end
 
   context 'when clicking on the destroy button' do

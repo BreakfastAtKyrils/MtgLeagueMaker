@@ -5,8 +5,8 @@ RSpec.describe 'player/destroy' do
 
   before do
     visit players_path
-    click_on(player.name.to_s)
-    click_on('Delete Player')
+    click_on player.name
+    click_on 'Delete Player'
   end
 
   context 'when clicking on the destroy button' do
