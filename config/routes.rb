@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'players#index'
-  resources :players, only: %i[create index new show edit update destroy]
-  resources :decks, only: %i[index show]
+  resources :players do
+    resources :decks
+  end
+  resources :decks
   resources :games, only: %i[index]
 end

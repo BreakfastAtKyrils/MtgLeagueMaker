@@ -33,3 +33,5 @@ en:
   invalid_name: 'Please enter a valid name'
   player_successful_updated: 'Player successfully updated.'
   player_successful_deletion: 'Player successfully deleted.'
+  deck_successful_deletion: 'Deck successfully deleted.'
+  deck_successful_updated: 'Deck successfully updated'
