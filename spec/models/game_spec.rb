@@ -24,6 +24,29 @@ RSpec.describe Game do
     end
   end
 
+  describe '#state' do
+    context 'when absent' do
+      let(:game) { build(:game, state: nil) }
+
+      it 'is invalid' do
+        expect(game.valid?).to be false
+      end
+
+      it 'raises a database error' do
+        expect { game.save(validate: false) }
+          .to raise_error ActiveRecord::NotNullViolation
+      end
+    end
+
+    context 'when present' do
+      let(:game) { build(:game, state: :completed) }
+
+      it 'is valid' do
+        expect(game.valid?).to be true
+      end
+    end
+  end
+
   describe '#game_records' do
     let(:game) { build(:game, game_records: [game_record]) }
     let(:game_record) { build(:game_record) }
