@@ -1,7 +1,4 @@
 class DecksController < ApplicationController
-  # rescue_from ActiveRecord::RecordNotFound, with: :not_found
-  # rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
-
   before_action :player
 
   def index
@@ -114,8 +111,4 @@ class DecksController < ApplicationController
       end
     end
   end
-
-  # def not_found
-  #   render json: { errors: ['Record not found'] }, status: :not_found
-  # end
 end
