@@ -39,7 +39,7 @@ RSpec.describe Game do
     end
 
     context 'when present' do
-      let(:game) { build(:game, state: 1) }
+      let(:game) { build(:game, state: :completed) }
 
       it 'is valid' do
         expect(game.valid?).to be true
