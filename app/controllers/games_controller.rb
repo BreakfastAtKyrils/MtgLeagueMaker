@@ -71,7 +71,7 @@ class GamesController < ApplicationController
       format.html do
         redirect_to games_path,
           status: :created,
-          notice: 'New game successfully added to the database.'
+          notice: "New game successfully added to the database with ID: #{@game.id}."
       end
       format.json do
         render json: { game: @game }, status: :created
