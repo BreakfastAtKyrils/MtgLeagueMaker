@@ -35,3 +35,4 @@ en:
   player_successful_deletion: 'Player successfully deleted.'
   deck_successful_deletion: 'Deck successfully deleted.'
   deck_successful_updated: 'Deck successfully updated'
+  invalid_date: 'Please enter a valid date'

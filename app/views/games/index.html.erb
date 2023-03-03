@@ -1,2 +1,26 @@
-<h1>Games#index</h1>
-<p>Find me in app/views/games/index.html.erb</p>
+<div class="level">
+  <div class="level-left title">
+    <h1 style="color:green;"> Montreal EDH league </h1>
+  </div>
+</div>
+
+<%= render layout: 'components/nav_bar', locals: { title: 'Listing Games' } do %>
+  <%= link_to 'Create a New Game', new_game_path, class: 'button is-light' %>
+<% end %>
+
+<table class="table is-bordered">
+  <thead>
+    <tr>
+      <th>Game</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= link_to "Game ID: #{game.id}", game_path(game) %></td>
+        <td><%= "State: #{game.state}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
