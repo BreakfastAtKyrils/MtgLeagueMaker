@@ -4,7 +4,12 @@
 
 <%= form_with model: @game, url: games_path, method: :post, local: true do |f| %>
   <h2> Played at: </h2>
-  <%= f.date_select :played_at, order: %i[day month year], include_blank: true %>
+  <%= f.date_select :played_at, order: %i[day month year] %>
   <br>
+  <h2> Participating Players: </h2>
+  <% @players = Player.pluck(:name, :id) %>
+  <%= f.collection_select :player, @players, :to_s, :to_s, include_blank: false %>
+  <%= f.collection_select :player, @players, :to_s, :to_s, include_blank: false %>
+
   <%= f.submit %>
 <% end %>

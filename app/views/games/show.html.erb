@@ -1,17 +1,2 @@
-<%= render layout: 'components/nav_bar', locals: { title: "Game ID: #{@game.id}" } do %>
-  <div class="buttons">
-    <%= link_to 'Mark completed', new_game_path(@game), class: 'button is-warning' %>
-    <%= link_to 'Mark pending', new_game_path(@game), class: 'button is-warning' %>
-    <%= link_to 'Delete', game_path(@game),
-          data: { 'turbo-method': :delete, turbo_confirm: 'Are you sure?' }, class: 'button is-danger' %>
-  </div>
-<% end %>
-
-<table class="table is-bordered">
-  <tbody>
-      <tr>
-        <td><%= "Game State: #{@game.state}" %></td>
-        <td><%= 'Player & Deck Info will eventually go here' %></td>
-      </tr>
-  </tbody>
-</table>
+<h1>Games#show</h1>
+<p>Find me in app/views/games/show.html.erb</p>

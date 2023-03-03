@@ -25,7 +25,6 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
-    @players = Player.all
   end
 
   def create
@@ -71,7 +70,7 @@ class GamesController < ApplicationController
       format.html do
         redirect_to games_path,
           status: :created,
-          notice: 'New game successfully added to the database.'
+          notice: "New game successfully added to the database: #{@game.name}"
       end
       format.json do
         render json: { game: @game }, status: :created
