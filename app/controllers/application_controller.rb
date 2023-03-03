@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def invalid_record(redirect_path:)
+  def invalid_record(redirect_path:, resource:)
     respond_to do |format|
       format.html { redirect_to redirect_path, alert: t(:invalid_name) }
-      format.json { render json: { errors: @player.errors }, status: :unprocessable_entity }
+      format.json { render json: { errors: resource.errors }, status: :unprocessable_entity }
     end
   end
 

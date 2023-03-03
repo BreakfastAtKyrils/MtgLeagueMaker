@@ -1,7 +1,4 @@
 class DecksController < ApplicationController
-  # rescue_from ActiveRecord::RecordNotFound, with: :not_found
-  # rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
-
   before_action :player
 
   def index
@@ -39,7 +36,7 @@ class DecksController < ApplicationController
     if @deck.save
       deck_successfully_created
     else
-      invalid_record(redirect_path: "/players/#{player.id}/decks")
+      invalid_record(redirect_path: "/players/#{player.id}/decks", resource: @deck)
     end
   end
 
@@ -50,7 +47,7 @@ class DecksController < ApplicationController
     if @deck.save
       deck_successfully_updated
     else
-      invalid_record(redirect_path: "/players/#{player.id}/decks")
+      invalid_record(redirect_path: "/players/#{player.id}/decks", resource: @deck)
     end
   end
 
@@ -60,7 +57,7 @@ class DecksController < ApplicationController
     if @deck.destroy
       deck_successfully_deleted
     else
-      invalid_record(redirect_path: "/players/#{player.id}/decks")
+      invalid_record(redirect_path: "/players/#{player.id}/decks", resource: @deck)
     end
   end
 
@@ -114,15 +111,4 @@ class DecksController < ApplicationController
       end
     end
   end
-
-  # def invalid_record(redirect_path:)
-  #   respond_to do |format|
-  #     format.html { redirect_to redirect_path, alert: t(:invalid_name) }
-  #     format.json { render json: { errors: @deck.errors }, status: :unprocessable_entity }
-  #   end
-  # end
-
-  # def not_found
-  #   render json: { errors: ['Record not found'] }, status: :not_found
-  # end
 end
