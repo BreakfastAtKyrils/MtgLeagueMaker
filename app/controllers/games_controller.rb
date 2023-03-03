@@ -25,6 +25,7 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    @players = Player.all
   end
 
   def create
@@ -70,7 +71,7 @@ class GamesController < ApplicationController
       format.html do
         redirect_to games_path,
           status: :created,
-          notice: "New game successfully added to the database: #{@game.name}"
+          notice: 'New game successfully added to the database.'
       end
       format.json do
         render json: { game: @game }, status: :created
@@ -104,7 +105,7 @@ class GamesController < ApplicationController
 
   def invalid_record(redirect_path:)
     respond_to do |format|
-      format.html { redirect_to redirect_path, alert: t(:invalid_name) }
+      format.html { redirect_to redirect_path, alert: t(:invalid_date) }
       format.json { render json: { errors: @game.errors }, status: :unprocessable_entity }
     end
   end
