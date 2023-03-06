@@ -33,7 +33,7 @@ class GamesController < ApplicationController
     if @game.save
       game_successfully_created
     else
-      invalid_record(redirect_path: new_game_path)
+      invalid_record(redirect_path: new_game_path, resource: @game)
     end
   end
 
@@ -45,7 +45,7 @@ class GamesController < ApplicationController
     if @game.save
       game_successfully_updated
     else
-      invalid_record(redirect_path: edit_game_path)
+      invalid_record(redirect_path: edit_game_path, resource: @game)
     end
   end
 
@@ -99,13 +99,6 @@ class GamesController < ApplicationController
       format.json do
         render json: { game: @game }, status: :ok
       end
-    end
-  end
-
-  def invalid_record(redirect_path:)
-    respond_to do |format|
-      format.html { redirect_to redirect_path, alert: t(:invalid_name) }
-      format.json { render json: { errors: @game.errors }, status: :unprocessable_entity }
     end
   end
 end
