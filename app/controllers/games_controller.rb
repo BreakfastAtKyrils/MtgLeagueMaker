@@ -32,7 +32,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
-    
+
     if @game.save
       game_successfully_created
     else
@@ -77,7 +77,7 @@ class GamesController < ApplicationController
       format.html do
         redirect_to games_path,
           status: :created,
-          notice: 'New game successfully added to the database.'
+          notice: t(:game_successful_creation)
       end
       format.json do
         render json: { game: @game }, status: :created
