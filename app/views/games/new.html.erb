@@ -13,8 +13,16 @@
   <% 6.times do %>
     <div>
       <%= f.fields_for :game_records do |sub_form| %>
-        Player: <%= sub_form.select(:player_id, options_for_select(@players)) %>
-        Deck: <%= sub_form.select(:deck_id, options_for_select(@decks)) %>
+        Player: <%= sub_form.select(:player_id, options_for_select(
+          @players.collect do |player|
+            [player.name, player.id]
+          end
+        )) %>
+        Deck: <%= sub_form.select(:deck_id, options_for_select(
+          @decks.collect do |deck|
+            [deck.name, deck.id]
+          end
+        )) %>
         Result: <%= sub_form.select(:result, options_for_select(%i[loss win draw])) %>
       <% end %>
     <div>

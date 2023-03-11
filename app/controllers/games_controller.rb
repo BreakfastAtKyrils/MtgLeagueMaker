@@ -26,8 +26,8 @@ class GamesController < ApplicationController
   def new
     @game = Game.new
     @game.game_records.build
-    @players = Player.pluck(:id)
-    @decks = Deck.pluck(:id)
+    @players = Player.all
+    @decks = Deck.all
   end
 
   def create

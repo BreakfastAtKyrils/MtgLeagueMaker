@@ -30,8 +30,8 @@ RSpec.describe 'games/create' do
         select_option('#game_state', 'pending')
 
         6.times do |index|
-          select_option("#game_game_records_attributes_#{index}_player_id", player.id)
-          select_option("#game_game_records_attributes_#{index}_deck_id", deck.id)
+          select_option("#game_game_records_attributes_#{index}_player_id", player.name)
+          select_option("#game_game_records_attributes_#{index}_deck_id", deck.name)
           select_option("#game_game_records_attributes_#{index}_result", 'loss')
         end
 
@@ -57,8 +57,8 @@ RSpec.describe 'games/create' do
         select_option('#game_state', 'pending')
 
         6.times do |index|
-          select_option("#game_game_records_attributes_#{index}_player_id", player.id)
-          select_option("#game_game_records_attributes_#{index}_deck_id", deck.id)
+          select_option("#game_game_records_attributes_#{index}_player_id", player.name)
+          select_option("#game_game_records_attributes_#{index}_deck_id", deck.name)
           select_option("#game_game_records_attributes_#{index}_result", 'loss')
         end
 
