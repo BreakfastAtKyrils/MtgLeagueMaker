@@ -32,11 +32,10 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
-
     if @game.save
       game_successfully_created
     else
-      invalid_record(redirect_path: new_game_path, resource: @game)
+      invalid_record(redirect_path: new_game_path, resource: @game, message: @game.errors)
     end
   end
 
@@ -63,6 +62,13 @@ class GamesController < ApplicationController
   end
 
   private
+
+  def invalid_record(redirect_path:, resource:, message:)
+    respond_to do |format|
+      format.html { redirect_to redirect_path, alert: message }
+      format.json { render json: { errors: resource.errors }, status: :unprocessable_entity }
+    end
+  end
 
   def game_params
     params.require(:game).permit(
