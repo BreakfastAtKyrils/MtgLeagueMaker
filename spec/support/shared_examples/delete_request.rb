@@ -22,7 +22,7 @@ RSpec.shared_examples 'a delete request' do
 
   context 'when given an invalid resource id' do
     before do
-      record.delete
+      record.destroy
       delete path
     end
 

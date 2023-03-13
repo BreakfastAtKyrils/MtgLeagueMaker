@@ -22,9 +22,11 @@
       <% end %>
 
       <% if alert %>
-        <div class="notification is-danger">
-          <%= alert %>
-        </div>
+          <div class="notification is-danger">
+            <% for error in flash[:alert] %>
+              <%= error %><br>
+            <% end %>
+          </div>
       <% end %>
 
       <div class="container">

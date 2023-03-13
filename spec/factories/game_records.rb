@@ -3,6 +3,6 @@ FactoryBot.define do
     player
     game
     deck
-    result { :loss }
+    result { :draw }
   end
 end
