@@ -48,7 +48,7 @@ RSpec.describe 'player/update' do
       end
 
       it 'displays an error message' do
-        expect(page).to have_content('Please enter a valid name')
+        expect(page).to have_content("can't be blank")
       end
     end
   end

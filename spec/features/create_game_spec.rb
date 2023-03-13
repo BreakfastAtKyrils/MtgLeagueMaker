@@ -1,5 +1,4 @@
 require 'rails_helper'
-require './spec/support/rspec_helpers'
 
 RSpec.describe 'games/create' do
   6.times do |index|

@@ -8,18 +8,40 @@
   <%= link_to 'Create a New Game', new_game_path, class: 'button is-light' %>
 <% end %>
 
-<table class="table is-bordered">
-  <thead>
-    <tr>
-      <th>Game</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @games.each do |game| %>
+<div style="display:flex;">
+  <table class="table is-bordered">
+    <thead>
       <tr>
-        <td><%= link_to game.played_at.strftime('%d %B, %Y'), game_path(game) %></td>
+        <th>Pending Games</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @games.each do |game| %>
+        <% if game.state == 'pending' %>
+          <tr>
+            <td><%= link_to game.played_at.strftime('%d %B, %Y'), game_path(game) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <table class="table is-bordered">
+    <thead>
+      <tr>
+        <th>Completed Games</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @games.each do |game| %>
+        <% if game.state == 'completed' %>
+          <tr>
+            <td><%= link_to game.played_at.strftime('%d %B, %Y'), game_path(game) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

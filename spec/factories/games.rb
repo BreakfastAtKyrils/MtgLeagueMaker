@@ -13,7 +13,7 @@ FactoryBot.define do
           id = index + 1
           player = create(:player, id: id)
           deck = create(:deck, id: id, player_id: player.id)
-          game.game_records << build(:game_record, player_id: player.id, deck_id: deck.id)
+          game.game_records << build(:game_record, player: player, deck: deck, result: :draw)
         end
       end
     end
