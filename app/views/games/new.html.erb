@@ -10,9 +10,9 @@
   <%= f.select(:state, options_for_select(%i[completed pending])) %>
   <br>
   <h2> Participating Players: </h2>
-  <% 6.times do %>
+  <% @game.game_records.each do |game_record| %>
     <div>
-      <%= f.fields_for :game_records do |game_record_form| %>
+      <%= f.fields_for :game_record do |game_record_form| %>
         Player: <%= game_record_form.select(:player_id, options_for_select(
           @players.collect do |player|
             [player.name, player.id]

@@ -25,7 +25,7 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
-    @game.game_records.build
+    6.times { @game.game_records.build }
     @players = Player.all
     @decks = Deck.all
   end

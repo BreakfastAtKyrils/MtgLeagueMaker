@@ -11,8 +11,8 @@ FactoryBot.define do
       after(:build) do |game, evaluator|
         evaluator.game_records_count.times do |index|
           id = index + 1
-          player = create(:player, id: id)
-          deck = create(:deck, id: id, player_id: player.id)
+          player = build(:player, id: id)
+          deck = build(:deck, id: id, player_id: player.id)
           game.game_records << build(:game_record, player: player, deck: deck, result: :draw)
         end
       end
