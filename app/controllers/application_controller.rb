@@ -6,8 +6,7 @@ class ApplicationController < ActionController::Base
 
   def invalid_record(redirect_path:, resource:)
     respond_to do |format|
-      # format.html { redirect_to redirect_path, alert: t(:invalid_name) }
-      format.html { redirect_to redirect_path, alert: resource.errors.messages }
+      format.html { redirect_to redirect_path, alert: resource.errors.full_messages }
       format.json { render json: { errors: resource.errors }, status: :unprocessable_entity }
     end
   end
