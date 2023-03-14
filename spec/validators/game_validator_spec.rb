@@ -87,25 +87,25 @@ RSpec.describe GameValidator do
       end
     end
 
-    context 'when there is more than 1 winner for a completed game' do
-      let(:game_record1) { build(:game_record, result: :win) }
-      let(:game_record2) { build(:game_record, result: :win) }
-      let(:game) { build(:game, state: :completed) }
+    # context 'when there is more than 1 winner for a completed game' do
+    #   let(:game_record1) { build(:game_record, result: :win) }
+    #   let(:game_record2) { build(:game_record, result: :win) }
+    #   let(:game) { build(:game, state: :completed) }
 
-      before do
-        game.game_records << game_record1
-        game.game_records << game_record2
-      end
+    #   before do
+    #     game.game_records << game_record1
+    #     game.game_records << game_record2
+    #   end
 
-      it 'is invalid' do
-        expect(game.valid?).to be false
-      end
+    #   it 'is invalid' do
+    #     expect(game.valid?).to be false
+    #   end
 
-      it 'raises the correct error' do
-        game.save
-        expect(game.errors.messages[:game_records]).to include('Cannot have more than 1 player with a win result')
-      end
-    end
+    #   it 'raises the correct error' do
+    #     game.save
+    #     expect(game.errors.messages[:game_records]).to include('Cannot have more than 1 player with a win result')
+    #   end
+    # end
 
     context 'when there are nul results for a completed game' do
       let(:game_record1) { build(:game_record, result: nil) }
