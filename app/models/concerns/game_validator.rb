@@ -1,6 +1,5 @@
 class GameValidator < ActiveModel::Validator
   def validate(game)
-    byebug
     validate_results_presence_if_completed(game)
     validate_2_or_more_players_if_completed(game)
     validate_no_duplicate_player(game)
