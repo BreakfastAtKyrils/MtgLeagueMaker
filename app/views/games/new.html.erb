@@ -10,30 +10,23 @@
   <%= f.select(:state, options_for_select(%i[completed pending])) %>
   <br>
   <h2> Participating Players: </h2>
-  <% @game.game_records.each_with_index do |game_record, index| %>
-    <%= f.fields_for :game_record do |game_record_form| %>
+
+  <%= f.fields_for :game_records do |game_record_form| %>
     <div style="display:flex;">
-    <div id="<%= "player_field_#{index + 1}" %>">
-      Player: <%= game_record_form.select(:player, options_for_select(
-        @players.collect do |player|
-          [player.name, player.id]
-        end
-      )) %>
+      <div id="<%= "player_field" %>">
+        Player: <%= game_record_form.select(:player_id, options_for_select(@players.collect { |player| [player.name, player.id] }), include_blank: true) %>
+      </div>
+
+      <div id="<%= "deck_field" %>">
+        Deck: <%= game_record_form.select(:deck_id, options_for_select(@decks.collect { |deck| [deck.name, deck.id] }), include_blank: true) %>
+      </div>
+
+      <div id="<%= "result_field" %>">
+        Result: <%= game_record_form.select(:result, options_for_select(%i[loss win draw]), include_blank: true) %>
+      </div>
     </div>
-    <div id="<%= "deck_field_#{index + 1}" %>">
-      Deck: <%= game_record_form.select(:deck, options_for_select(
-        @decks.collect do |deck|
-          [deck.name, deck.id]
-        end
-      )) %>
-    </div>
-    <div id="<%= "result_field_#{index + 1}" %>">
-      Result: <%= game_record_form.select(:result, options_for_select(%i[loss win draw]), include_blank: true) %>
-      <% end %>
-    </div>
-    </div>
-    <% end %>
-    <div>
+  <% end %>
+
   <br>
   <%= f.submit %>
 <% end %>
