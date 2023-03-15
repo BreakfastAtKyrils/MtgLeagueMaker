@@ -2,33 +2,4 @@
   title: 'Create New Game'
 } %>
 
-<%= form_for @game, url: games_path, method: :post, local: true do |f| %>
-  <h2> Played at: </h2>
-  <%= date_field(:game, :played_at, value: Time.zone.now.strftime('%Y-%m-%d')) %>
-  <br>
-  <h2> State: </h2>
-  <%= f.select(:state, options_for_select(%i[completed pending])) %>
-  <br>
-  <h2> Participating Players: </h2>
-
-  <%= f.fields_for :game_records do |game_record_form| %>
-    <% index = game_record_form.options[:child_index] %>
-
-    <div style="display:flex;">
-      <div id="<%= "player_field_#{index}" %>">
-        Player: <%= game_record_form.select(:player_id, options_for_select(@players.collect { |player| [player.name, player.id] }), include_blank: true) %>
-      </div>
-
-      <div id="<%= "deck_field_#{index}" %>">
-        Deck: <%= game_record_form.select(:deck_id, options_for_select(@decks.collect { |deck| [deck.name, deck.id] }), include_blank: true) %>
-      </div>
-
-      <div id="<%= "result_field_#{index}" %>">
-        Result: <%= game_record_form.select(:result, options_for_select(%i[loss win draw]), include_blank: true) %>
-      </div>
-    </div>
-  <% end %>
-
-  <br>
-  <%= f.submit %>
-<% end %>
+<%= render 'form' %>

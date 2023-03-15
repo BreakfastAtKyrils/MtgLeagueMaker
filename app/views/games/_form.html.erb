@@ -1,0 +1,35 @@
+<%= form_for @game, url: games_path, method: :post, local: true do |f| %>
+  <h2> Played at: </h2>
+  <%= date_field(:game, :played_at, value: Time.zone.now.strftime('%Y-%m-%d')) %>
+  <br>
+  <h2> State: </h2>
+  <%= f.select(:state, options_for_select(%i[completed pending])) %>
+  <br>
+  <%= f.fields_for :game_records do |game_record_form| %>
+
+    <div style="display:flex;">
+      <div id="<%= "player_field_#{game_record_form.options[:child_index]}" %>">
+        Player: <%= game_record_form.select(:player_id, options_for_select(
+          @players.collect do |player|
+            [player.name, player.id]
+          end
+        ), include_blank: true) %>
+      </div>
+
+      <div id="<%= "deck_field_#{game_record_form.options[:child_index]}" %>">
+        Deck: <%= game_record_form.select(:deck_id, options_for_select(
+          @decks.collect do |deck|
+            [deck.name, deck.id]
+          end
+        ), include_blank: true) %>
+      </div>
+
+      <div id="<%= "result_field_#{game_record_form.options[:child_index]}" %>">
+        Result: <%= game_record_form.select(:result, options_for_select(%i[loss win draw]), include_blank: true) %>
+      </div>
+      <%= game_record_form.label :_destroy, 'Remove Player?' %>
+      <%= game_record_form.check_box :_destroy %>
+    </div>
+  <% end %>
+  <%= f.submit %>
+<% end %>

@@ -68,7 +68,7 @@ class GamesController < ApplicationController
     params.require(:game).permit(
       :played_at,
       :state,
-      game_records_attributes: %i[player_id deck_id result]
+      game_records_attributes: %i[player_id deck_id result _destroy]
     )
   end
 

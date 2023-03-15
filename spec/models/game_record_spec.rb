@@ -5,13 +5,8 @@ RSpec.describe GameRecord do
     context 'when absent' do
       let(:game_record) { build(:game_record, result: nil) }
 
-      it 'is invalid' do
-        expect(game_record.valid?).to be false
-      end
-
-      it 'raises a database error' do
-        expect { game_record.save(validate: false) }
-          .to raise_error ActiveRecord::NotNullViolation
+      it 'is valid' do
+        expect(game_record.valid?).to be true
       end
     end
 

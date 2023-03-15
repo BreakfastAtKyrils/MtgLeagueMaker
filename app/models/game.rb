@@ -5,5 +5,5 @@ class Game < ApplicationRecord
 
   enum :state, %i[pending completed]
   has_many :game_records, dependent: :destroy
-  accepts_nested_attributes_for :game_records
+  accepts_nested_attributes_for :game_records, allow_destroy: true
 end
