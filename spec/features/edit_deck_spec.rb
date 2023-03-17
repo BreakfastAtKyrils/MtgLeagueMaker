@@ -52,7 +52,7 @@ RSpec.describe 'deck/update' do
       end
 
       it 'displays an error notice message' do
-        expect(page).to have_content('Please enter a valid name')
+        expect(page).to have_content("can't be blank")
       end
     end
   end

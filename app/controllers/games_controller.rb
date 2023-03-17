@@ -25,6 +25,9 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    6.times { @game.game_records.build }
+    @players = Player.all
+    @decks = Deck.all
   end
 
   def create
@@ -62,7 +65,11 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:played_at, :state)
+    params.require(:game).permit(
+      :played_at,
+      :state,
+      game_records_attributes: %i[player_id deck_id result _destroy]
+    )
   end
 
   def game_successfully_created
@@ -70,7 +77,7 @@ class GamesController < ApplicationController
       format.html do
         redirect_to games_path,
           status: :created,
-          notice: "New game successfully added to the database: #{@game.name}"
+          notice: t(:game_successful_creation)
       end
       format.json do
         render json: { game: @game }, status: :created

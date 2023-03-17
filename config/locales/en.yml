@@ -35,3 +35,5 @@ en:
   player_successful_deletion: 'Player successfully deleted.'
   deck_successful_deletion: 'Deck successfully deleted.'
   deck_successful_updated: 'Deck successfully updated'
+  game_successful_creation: 'New game successfully added to the database.'
+  invalid_game_date: 'Must enter a valid date'

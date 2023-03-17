@@ -11,4 +11,5 @@ RSpec.configure do |config|
   end
   config.shared_context_metadata_behavior = :apply_to_host_groups
   Capybara.current_driver = :rack_test
+  config.include FormHelpers, type: :feature
 end
